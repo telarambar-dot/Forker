@@ -89,13 +89,13 @@ class Bot
         $this->captureUpdate();
     }
 
-    public function chat(string $chat_id): static
+    public function chat(string $chat_id\): self
     {
         $this->builder_chat_id = $chat_id;
         return $this;
     }
 
-    public function message(string $text, ?string $parse_mode = null): static
+    public function message(string $text, ?string $parse_mode = null\): self
     {
         $this->builder_text = $text;
         if ($parse_mode) {
@@ -104,13 +104,13 @@ class Bot
         return $this;
     }
 
-    public function replyTo(string $message_id): static
+    public function replyTo(string $message_id\): self
     {
         $this->builder_reply_to = $message_id;
         return $this;
     }
 
-    public function file(string $path): static
+    public function file(string $path\): self
     {
         $this->builder_file_path = $path;
         $this->builder_file_id = null;
@@ -118,19 +118,19 @@ class Bot
         return $this;
     }
 
-    public function file_id(string $file_id): static
+    public function file_id(string $file_id\): self
     {
         $this->builder_file_id = $file_id;
         return $this;
     }
 
-    public function file_type(string $file_type): static
+    public function file_type(string $file_type\): self
     {
         $this->builder_file_type = $file_type;
         return $this;
     }
 
-    public function caption(string $caption, ?string $parse_mode = null): static
+    public function caption(string $caption, ?string $parse_mode = null\): self
     {
         $this->builder_caption = $caption;
         if ($parse_mode) {
@@ -139,53 +139,53 @@ class Bot
         return $this;
     }
 
-    public function poll(string $question, array $options): static
+    public function poll(string $question, array $options\): self
     {
         $this->builder_question = $question;
         $this->builder_options = $options;
         return $this;
     }
 
-    public function location(float $lat, float $lng): static
+    public function location(float $lat, float $lng\): self
     {
         $this->builder_lat = $lat;
         $this->builder_lng = $lng;
         return $this;
     }
 
-    public function contact(string $first_name, string $phone_number): static
+    public function contact(string $first_name, string $phone_number\): self
     {
         $this->builder_contact_first = $first_name;
         $this->builder_contact_phone = $phone_number;
         return $this;
     }
 
-    public function inlineKeypad(array $keypad): static
+    public function inlineKeypad(array $keypad\): self
     {
         $this->builder_inline_keypad = $keypad;
         return $this;
     }
 
-    public function chatKeypad(array $keypad, ?string $keypad_type = 'New'): static
+    public function chatKeypad(array $keypad, ?string $keypad_type = 'New'\): self
     {
         $this->builder_chat_keypad = $keypad;
         $this->builder_chat_keypad_type = $keypad_type;
         return $this;
     }
 
-    public function forwardFrom(string $from_chat_id): static
+    public function forwardFrom(string $from_chat_id\): self
     {
         $this->builder_from_chat_id = $from_chat_id;
         return $this;
     }
 
-    public function forwardTo(string $to_chat_id): static
+    public function forwardTo(string $to_chat_id\): self
     {
         $this->builder_to_chat_id = $to_chat_id;
         return $this;
     }
 
-    public function messageId(string $message_id): static
+    public function messageId(string $message_id\): self
     {
         $this->builder_message_id = $message_id;
         return $this;
@@ -221,7 +221,7 @@ class Bot
         return $this->cooldown;
     }
 
-    public function setParseMode(string $parse_mode): static
+    public function setParseMode(string $parse_mode\): self
     {
         $validModes = ['Markdown', 'HTML', 'Plain'];
         if (!in_array($parse_mode, $validModes)) {
