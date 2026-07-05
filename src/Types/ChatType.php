@@ -2,10 +2,14 @@
 
 namespace RubikaBot\Types;
 
-enum ChatType: string
+final class ChatType
 {
-    case USER = 'User';
-    case GROUP = 'Group';
-    case CHANNEL = 'Channel';
-    case BOT = 'Bot';
+    public const USER = 'User';
+    public const GROUP = 'Group';
+    public const CHANNEL = 'Channel';
+    public const BOT = 'Bot';
+
+    private function __construct()
+    {
+    }
 }

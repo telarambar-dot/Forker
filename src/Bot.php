@@ -835,6 +835,12 @@ class Bot
         $input = @file_get_contents("php://input");
         if ($input) {
             $this->update = json_decode($input, true) ?? [];
+
+            // Log raw webhook update to a file for inspection (one JSON per line)
+            $logFile = $this->hashedToken . '_WEBHOOK_UPDATES.log';
+            $timestamp = date('c');
+            $line = $timestamp . " " . trim($input) . PHP_EOL;
+            @file_put_contents($logFile, $line, FILE_APPEND | LOCK_EX);
         } else {
             $this->update = [];
         }
