@@ -9,7 +9,7 @@ use RubikaBot\Keyboard\Button;
 use RubikaBot\Keyboard\Keypad;
 use RubikaBot\Keyboard\KeypadRow;
 
-$bot = new Bot('YOUR_BOT_TOKEN');
+$bot = new Bot('BIHAAB0GVXFTQQXOFHXUCHKWZHRXQMHOVPTGCEMBGUPDSAJUPGISSIKUCEZOGOOX');
 
 // پاسخ به پیام "سلام"
 $bot->onMessage(Filters::text('سلام'), function(Bot $bot, $message) {
