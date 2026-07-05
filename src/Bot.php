@@ -778,10 +778,18 @@ class Bot
 
     public function updateBotEndpoints(string $url, string $type): array
     {
+        if (!$url) {
+            throw new \RuntimeException('set url endpoint');
+        }
+        if (!$type) {
+            throw new \RuntimeException('set type endpoint');
+        }
+
         $data = [
-            'url' => $url ?? throw new \RuntimeException('set url endpoint'),
-            'type' => $type ?? throw new \RuntimeException('set type endpoint')
+            'url' => $url,
+            'type' => $type,
         ];
+
         return $this->apiRequest('updateBotEndpoints', $data);
     }
 
