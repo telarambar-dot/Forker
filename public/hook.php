@@ -20,11 +20,4 @@ $bot->onMessage(Filters::command('start'), function (Bot $bot, $message): void {
         ->send();
 });
 
-// Run bot only for POST requests (webhook) or from CLI. When opened in a browser (GET)
-// we should not start the long-polling loop which blocks the request.
-if (php_sapi_name() === 'cli' || (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST')) {
-    $bot->run();
-} else {
-    http_response_code(200);
-    echo "RubikaBot webhook endpoint. Send POST requests or run via CLI.\n";
-}
+$bot->run();
