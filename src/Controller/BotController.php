@@ -54,7 +54,7 @@ class BotController
 
         if (!$user['is_verified']) {
             if ($buttonId === 'membership_auth' || $text === 'عضویت و احراز هویت') {
-                $response = $this->registrationService->startRegistration($user['id']);
+                $response = $this->registrationService->startRegistration($user['id'], $user);
                 $this->sendResponse($message->chat_id, $response);
                 return;
             }

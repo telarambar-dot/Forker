@@ -1,1 +1,5 @@
 [2026-07-06 08:58:42] INFO: Webhook received {"raw_payload":[],"method":"GET"}
+[2026-07-06 09:00:02] INFO: Incoming message {"payload":[]}
+[2026-07-06 09:00:02] INFO: Parsed message {"sender_id":"u0BsqLd057175bf1c9185cfe53681a03","chat_id":"b0BsqLd0pPb05eb9ecffb526a9d97e28","button_id":null,"text":"fbgfgbfgfg"}
+[2026-07-06 09:00:02] INFO: Sending response {"chat_id":"b0BsqLd0pPb05eb9ecffb526a9d97e28","response":{"text":"برای استفاده از ربات ابتدا باید ثبت‌نام و احراز هویت خود را تکمیل کنید.","keyboard":{"rows":[{"buttons":[{"id":"membership_auth","type":"Simple","button_text":"عضویت و احراز هویت"}]}],"resize_keyboard":true,"on_time_keyboard":false}}}
+[2026-07-06 09:00:02] INFO: Response sent {"send_result":{"status":"OK","data":{"message_id":"1821700047999656535"}}}

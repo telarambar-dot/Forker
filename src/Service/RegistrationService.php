@@ -112,7 +112,7 @@ class RegistrationService
         return $this->userRepository->create($externalId, $isAdmin);
     }
 
-    public function startRegistration(int $userId): array
+    public function startRegistration(int $userId, array $user = []): array
     {
         $this->pdo->beginTransaction();
         try {
@@ -129,7 +129,23 @@ class RegistrationService
             throw $exception;
         }
 
-        return $this->buildResponse(self::STEP_ENTER_FIRST_NAME);
+        // Get fresh user data
+        $userData = $this->userRepository->findById($userId);
+        
+        // Build welcome message with user's name
+        $firstName = trim((string)($userData['first_name'] ?? ''));
+        $lastName = trim((string)($userData['last_name'] ?? ''));
+        
+        $greeting = 'کاربر گرامی';
+        if ($firstName && $lastName) {
+            $greeting = "کاربر گرامی {$firstName} {$lastName}";
+        } elseif ($firstName) {
+            $greeting = "کاربر گرامی {$firstName}";
+        }
+        
+        return [
+            'text' => "{$greeting}\n\nجهت ادامه و استفاده از خدمات، ابتدا باید فرآیند احراز هویت را تکمیل کنید.\n\nلطفاً اطلاعات خود را دقیق وارد کنید.\n\n" . self::PROMPTS[self::STEP_ENTER_FIRST_NAME],
+        ];
     }
 
     public function getState(int $userId): ?array
@@ -150,7 +166,7 @@ class RegistrationService
 
         if ($this->isConfirmStep($state['step'])) {
             return [
-                'text' => 'لطفاً برای ادامه روی دکمه ثبت یا ویرایش کلیک کنید.',
+                'text' => sprintf(self::PROMPTS[$state['step']], $this->getPendingLabel($state['step'], $state)),
                 'keyboard' => KeyboardService::confirmKeyboard(),
             ];
         }
@@ -290,6 +306,18 @@ class RegistrationService
 
     private function finalizeRegistration(int $userId): array
     {
+        $user = $this->userRepository->findById($userId);
+        
+        $firstName = trim((string)($user['first_name'] ?? ''));
+        $lastName = trim((string)($user['last_name'] ?? ''));
+        
+        $greeting = 'کاربر گرامی';
+        if ($firstName && $lastName) {
+            $greeting = "کاربر گرامی {$firstName} {$lastName}";
+        } elseif ($firstName) {
+            $greeting = "کاربر گرامی {$firstName}";
+        }
+        
         $this->pdo->beginTransaction();
         try {
             $this->userRepository->update($userId, [
@@ -304,7 +332,7 @@ class RegistrationService
         }
 
         return [
-            'text' => 'ثبت‌نام شما با موفقیت انجام شد.\nاطلاعات شما جهت بررسی برای مدیران ارسال گردید.\nتا زمان تایید مدیر امکان استفاده از ربات را ندارید.',
+            'text' => "{$greeting}\n\nثبت‌نام شما با موفقیت انجام شد.\nاطلاعات شما برای بررسی و تایید به مدیران ارسال گردید.\n\nتا زمان تایید مدیر، امکان استفاده از خدمات ربات را ندارید.\n\nمنتظر بمانید...",
             'keyboard' => KeyboardService::unverifiedKeyboard(),
         ];
     }
@@ -548,7 +576,20 @@ class RegistrationService
             'employment_document' => $this->fileRepository->findByUserIdAndType($user['id'], 'employment_document'),
         ];
 
+        $firstName = trim((string)($user['first_name'] ?? ''));
+        $lastName = trim((string)($user['last_name'] ?? ''));
+        
+        $greeting = 'کاربر گرامی';
+        if ($firstName && $lastName) {
+            $greeting = "کاربر گرامی {$firstName} {$lastName}";
+        } elseif ($firstName) {
+            $greeting = "کاربر گرامی {$firstName}";
+        }
+
         $text = implode("\n", [
+            $greeting,
+            '',
+            'لطفاً اطلاعات وارد شده خود را مرور کنید:',
             '-------------------------',
             'نام: ' . ($user['first_name'] ?? '-'),
             'نام خانوادگی: ' . ($user['last_name'] ?? '-'),
