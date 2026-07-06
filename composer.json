@@ -1,5 +1,10 @@
 {
     "require": {
         "rubikabot/rubikabot": "dev-main"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
     }
 }

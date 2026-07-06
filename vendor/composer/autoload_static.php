@@ -11,6 +11,10 @@ class ComposerStaticInitb7c6a72eab106a44670ebb51e48ce86b
         array (
             'RubikaBot\\' => 10,
         ),
+        'A' =>
+        array (
+            'App\\' => 4,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -18,10 +22,37 @@ class ComposerStaticInitb7c6a72eab106a44670ebb51e48ce86b
         array (
             0 => __DIR__ . '/..' . '/rubikabot/rubikabot/src',
         ),
+        'App\\' =>
+        array (
+            0 => __DIR__ . '/../..' . '/src',
+        ),
     );
 
     public static $classMap = array (
+        'App\\Controller\\BotController' => __DIR__ . '/../..' . '/src/Controller/BotController.php',
+        'App\\Database\\Connection' => __DIR__ . '/../..' . '/src/Database/Connection.php',
+        'App\\Repository\\FileRepository' => __DIR__ . '/../..' . '/src/Repository/FileRepository.php',
+        'App\\Repository\\RegistrationStateRepository' => __DIR__ . '/../..' . '/src/Repository/RegistrationStateRepository.php',
+        'App\\Repository\\UserRepository' => __DIR__ . '/../..' . '/src/Repository/UserRepository.php',
+        'App\\Repository\\WorkflowStateRepository' => __DIR__ . '/../..' . '/src/Repository/WorkflowStateRepository.php',
+        'App\\Service\\AdminService' => __DIR__ . '/../..' . '/src/Service/AdminService.php',
+        'App\\Service\\KeyboardService' => __DIR__ . '/../..' . '/src/Service/KeyboardService.php',
+        'App\\Service\\RegistrationService' => __DIR__ . '/../..' . '/src/Service/RegistrationService.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'RubikaBot\\Bot' => __DIR__ . '/..' . '/rubikabot/rubikabot/src/Bot.php',
+        'RubikaBot\\Filters\\Filter' => __DIR__ . '/..' . '/rubikabot/rubikabot/src/Filters/Filter.php',
+        'RubikaBot\\Filters\\Filters' => __DIR__ . '/..' . '/rubikabot/rubikabot/src/Filters/Filters.php',
+        'RubikaBot\\Keyboard\\Button' => __DIR__ . '/..' . '/rubikabot/rubikabot/src/Keyboard/Button.php',
+        'RubikaBot\\Keyboard\\ButtonLink' => __DIR__ . '/..' . '/rubikabot/rubikabot/src/Keyboard/ButtonLink.php',
+        'RubikaBot\\Keyboard\\Keypad' => __DIR__ . '/..' . '/rubikabot/rubikabot/src/Keyboard/Keypad.php',
+        'RubikaBot\\Keyboard\\KeypadRow' => __DIR__ . '/..' . '/rubikabot/rubikabot/src/Keyboard/KeypadRow.php',
+        'RubikaBot\\Message' => __DIR__ . '/..' . '/rubikabot/rubikabot/src/Message.php',
+        'RubikaBot\\Metadata\\Markdown' => __DIR__ . '/..' . '/rubikabot/rubikabot/src/Metadata/Markdown.php',
+        'RubikaBot\\Metadata\\TrackParsed' => __DIR__ . '/..' . '/rubikabot/rubikabot/src/Metadata/TrackParsed.php',
+        'RubikaBot\\Metadata\\Utils' => __DIR__ . '/..' . '/rubikabot/rubikabot/src/Metadata/Utils.php',
+        'RubikaBot\\Types\\ButtonLinkType' => __DIR__ . '/..' . '/rubikabot/rubikabot/src/Types/ButtonLinkType.php',
+        'RubikaBot\\Types\\ChatType' => __DIR__ . '/..' . '/rubikabot/rubikabot/src/Types/ChatType.php',
+        'RubikaBot\\Types\\UpdateType' => __DIR__ . '/..' . '/rubikabot/rubikabot/src/Types/UpdateType.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

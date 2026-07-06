@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'RubikaBot\\' => array($vendorDir . '/rubikabot/rubikabot/src'),
+    'App\\' => array($baseDir . '/src'),
 );

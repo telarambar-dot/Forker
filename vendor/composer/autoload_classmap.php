@@ -6,5 +6,28 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Controller\\BotController' => $baseDir . '/src/Controller/BotController.php',
+    'App\\Database\\Connection' => $baseDir . '/src/Database/Connection.php',
+    'App\\Repository\\FileRepository' => $baseDir . '/src/Repository/FileRepository.php',
+    'App\\Repository\\RegistrationStateRepository' => $baseDir . '/src/Repository/RegistrationStateRepository.php',
+    'App\\Repository\\UserRepository' => $baseDir . '/src/Repository/UserRepository.php',
+    'App\\Repository\\WorkflowStateRepository' => $baseDir . '/src/Repository/WorkflowStateRepository.php',
+    'App\\Service\\AdminService' => $baseDir . '/src/Service/AdminService.php',
+    'App\\Service\\KeyboardService' => $baseDir . '/src/Service/KeyboardService.php',
+    'App\\Service\\RegistrationService' => $baseDir . '/src/Service/RegistrationService.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'RubikaBot\\Bot' => $vendorDir . '/rubikabot/rubikabot/src/Bot.php',
+    'RubikaBot\\Filters\\Filter' => $vendorDir . '/rubikabot/rubikabot/src/Filters/Filter.php',
+    'RubikaBot\\Filters\\Filters' => $vendorDir . '/rubikabot/rubikabot/src/Filters/Filters.php',
+    'RubikaBot\\Keyboard\\Button' => $vendorDir . '/rubikabot/rubikabot/src/Keyboard/Button.php',
+    'RubikaBot\\Keyboard\\ButtonLink' => $vendorDir . '/rubikabot/rubikabot/src/Keyboard/ButtonLink.php',
+    'RubikaBot\\Keyboard\\Keypad' => $vendorDir . '/rubikabot/rubikabot/src/Keyboard/Keypad.php',
+    'RubikaBot\\Keyboard\\KeypadRow' => $vendorDir . '/rubikabot/rubikabot/src/Keyboard/KeypadRow.php',
+    'RubikaBot\\Message' => $vendorDir . '/rubikabot/rubikabot/src/Message.php',
+    'RubikaBot\\Metadata\\Markdown' => $vendorDir . '/rubikabot/rubikabot/src/Metadata/Markdown.php',
+    'RubikaBot\\Metadata\\TrackParsed' => $vendorDir . '/rubikabot/rubikabot/src/Metadata/TrackParsed.php',
+    'RubikaBot\\Metadata\\Utils' => $vendorDir . '/rubikabot/rubikabot/src/Metadata/Utils.php',
+    'RubikaBot\\Types\\ButtonLinkType' => $vendorDir . '/rubikabot/rubikabot/src/Types/ButtonLinkType.php',
+    'RubikaBot\\Types\\ChatType' => $vendorDir . '/rubikabot/rubikabot/src/Types/ChatType.php',
+    'RubikaBot\\Types\\UpdateType' => $vendorDir . '/rubikabot/rubikabot/src/Types/UpdateType.php',
 );
