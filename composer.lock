@@ -1,0 +1,74 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "b7c6a72eab106a44670ebb51e48ce86b",
+    "packages": [
+        {
+            "name": "rubikabot/rubikabot",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Daniyel-Vanguard/Rubika-Bot.git",
+                "reference": "bb7970ccaa4109e86827c89042b3b3e0403b751a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Daniyel-Vanguard/Rubika-Bot/zipball/bb7970ccaa4109e86827c89042b3b3e0403b751a",
+                "reference": "bb7970ccaa4109e86827c89042b3b3e0403b751a",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": "^7.4|^8.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "RubikaBot\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Daniyel Vanguard",
+                    "email": "hadipishghadam13@gmail.com",
+                    "homepage": "https://github.com/Daniyel-Vanguard",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A PHP library for Rubika Bot API",
+            "homepage": "https://github.com/Daniyel-Vanguard/Rubika-Bot",
+            "keywords": [
+                "api",
+                "bot",
+                "php",
+                "rubika",
+                "rubikabot"
+            ],
+            "support": {
+                "issues": "https://github.com/Daniyel-Vanguard/Rubika-Bot/issues",
+                "source": "https://github.com/Daniyel-Vanguard/Rubika-Bot/tree/main"
+            },
+            "time": "2025-11-27T20:56:37+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "rubikabot/rubikabot": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {},
+    "platform-dev": {},
+    "plugin-api-version": "2.9.0"
+}

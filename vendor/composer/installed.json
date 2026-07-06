@@ -1,0 +1,62 @@
+{
+    "packages": [
+        {
+            "name": "rubikabot/rubikabot",
+            "version": "dev-main",
+            "version_normalized": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Daniyel-Vanguard/Rubika-Bot.git",
+                "reference": "bb7970ccaa4109e86827c89042b3b3e0403b751a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Daniyel-Vanguard/Rubika-Bot/zipball/bb7970ccaa4109e86827c89042b3b3e0403b751a",
+                "reference": "bb7970ccaa4109e86827c89042b3b3e0403b751a",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": "^7.4|^8.0"
+            },
+            "time": "2025-11-27T20:56:37+00:00",
+            "default-branch": true,
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "RubikaBot\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Daniyel Vanguard",
+                    "email": "hadipishghadam13@gmail.com",
+                    "homepage": "https://github.com/Daniyel-Vanguard",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A PHP library for Rubika Bot API",
+            "homepage": "https://github.com/Daniyel-Vanguard/Rubika-Bot",
+            "keywords": [
+                "api",
+                "bot",
+                "php",
+                "rubika",
+                "rubikabot"
+            ],
+            "support": {
+                "issues": "https://github.com/Daniyel-Vanguard/Rubika-Bot/issues",
+                "source": "https://github.com/Daniyel-Vanguard/Rubika-Bot/tree/main"
+            },
+            "install-path": "../rubikabot/rubikabot"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}
