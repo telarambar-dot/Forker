@@ -17,7 +17,11 @@ $rawPayload = file_get_contents('php://input');
 $payload = json_decode($rawPayload, true) ?: [];
 $logger->info('Webhook received', ['raw_payload' => $payload, 'method' => $_SERVER['REQUEST_METHOD'] ?? null]);
 
-$bot = new Bot('BIHAAB0GVXFTQQXOFHXUCHKWZHRXQMHOVPTGCEMBGUPDSAJUPGISSIKUCEZOGOOX');
+$bot = new Bot('BIHAAB0GVXFTQQXOFHXUCHKWZHRXQMHOVPTGCEMBGUPDSAJUPGISSIKUCEZOGOOX', [
+    'timeout' => 10,
+    'connect_timeout' => 3,
+    'max_retries' => 1,
+]);
 $controller = new LoggingBotController($bot, $pdo, $config, $logger);
 
 $bot->onMessage(Filters::any(), function (Bot $bot, Message $message) use ($controller, $payload, $logger) {

@@ -23,8 +23,9 @@ class Bot
     private string $hashedToken;
     private string $baseUrl;
     private array $config = [
-        'timeout' => 30,
-        'max_retries' => 3,
+        'timeout' => 10,
+        'connect_timeout' => 3,
+        'max_retries' => 2,
         'parse_mode' => 'Markdown',
     ];
 
@@ -584,7 +585,8 @@ class Bot
             CURLOPT_POST => true,
             CURLOPT_POSTFIELDS => ['file' => $curl_file],
             CURLOPT_HTTPHEADER => ['Content-Type: multipart/form-data'],
-            CURLOPT_TIMEOUT => 30,
+            CURLOPT_TIMEOUT => $this->config['timeout'] ?? 10,
+            CURLOPT_CONNECTTIMEOUT => $this->config['connect_timeout'] ?? 3,
         ]);
         $response = curl_exec($ch);
         $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -613,7 +615,8 @@ class Bot
                     CURLOPT_POST => true,
                     CURLOPT_HTTPHEADER => ['Content-Type: application/json'],
                     CURLOPT_POSTFIELDS => json_encode($params),
-                    CURLOPT_TIMEOUT => $this->config['timeout'],
+                    CURLOPT_TIMEOUT => $this->config['timeout'] ?? 10,
+                    CURLOPT_CONNECTTIMEOUT => $this->config['connect_timeout'] ?? 3,
                 ]);
                 $response = curl_exec($ch);
                 $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
