@@ -76,6 +76,16 @@ CREATE TABLE IF NOT EXISTS files (
     created_at TEXT NOT NULL,
     FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE
 );
+
+CREATE TABLE IF NOT EXISTS workflow_states (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    actor_id TEXT NOT NULL UNIQUE,
+    type TEXT NOT NULL,
+    step TEXT NOT NULL,
+    context TEXT,
+    data TEXT,
+    updated_at TEXT NOT NULL
+);
 SQL
             );
 

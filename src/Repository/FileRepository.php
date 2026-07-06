@@ -49,4 +49,21 @@ class FileRepository
         $row = $stmt->fetch();
         return $row === false ? null : $row;
     }
+
+    public function saveFile(int $userId, string $type, string $fileId, ?string $fileName): array
+    {
+        $existing = $this->findByUserIdAndType($userId, $type);
+        if ($existing) {
+            $stmt = $this->pdo->prepare('UPDATE files SET file_id = :file_id, file_name = :file_name, created_at = :created_at WHERE id = :id');
+            $stmt->execute([
+                'file_id' => $fileId,
+                'file_name' => $fileName,
+                'created_at' => (new \DateTimeImmutable())->format('Y-m-d H:i:s'),
+                'id' => $existing['id'],
+            ]);
+            return $this->findById((int)$existing['id']);
+        }
+
+        return $this->create($userId, $type, $fileId, $fileName);
+    }
 }
