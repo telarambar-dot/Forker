@@ -7,10 +7,48 @@ use RubikaBot\Filters\Filters;
 use RubikaBot\Keyboard\Button;
 use RubikaBot\Keyboard\Keypad;
 
+$rawInput = file_get_contents('php://input');
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(200);
     echo 'RubikaBot webhook endpoint is ready.';
     exit;
+}
+
+function getWebhookPayload(): array
+{
+    static $payload = null;
+    if ($payload !== null) {
+        return $payload;
+    }
+
+    $input = file_get_contents('php://input');
+    $payload = json_decode($input, true) ?: [];
+    return $payload;
+}
+
+function getMessageUniqueId(array $payload): ?string
+{
+    $update = $payload['update'] ?? null;
+    if (!$update || !is_array($update)) {
+        return null;
+    }
+
+    if (!empty($update['new_message']['message_id'])) {
+        return 'message:' . $update['new_message']['message_id'];
+    }
+
+    if (!empty($payload['update_id'])) {
+        return 'update:' . $payload['update_id'];
+    }
+
+    $sender = $update['new_message']['sender_id'] ?? '';
+    $text = trim($update['new_message']['text'] ?? '');
+    if ($sender !== '' && $text !== '') {
+        return 'sender_text:' . $sender . ':' . md5($text);
+    }
+
+    return null;
 }
 
 function isDuplicateMessage(string $messageId): bool
@@ -40,9 +78,12 @@ function isDuplicateMessage(string $messageId): bool
 
 $bot = new Bot('BIHAAB0GVXFTQQXOFHXUCHKWZHRXQMHOVPTGCEMBGUPDSAJUPGISSIKUCEZOGOOX');
 
-$bot->onMessage(Filters::command('start'), function(Bot $bot, $message) {
-    if ($message->message_id !== null && isDuplicateMessage($message->message_id)) {
-        error_log("Duplicate /start ignored: {$message->message_id}");
+$bot->onMessage(Filters::command('start'), function(Bot $bot, $message) use ($rawInput) {
+    $payload = getWebhookPayload();
+    $uniqueId = getMessageUniqueId($payload);
+
+    if ($uniqueId !== null && isDuplicateMessage($uniqueId)) {
+        error_log("Duplicate /start ignored: {$uniqueId} | raw input: {$rawInput}");
         return;
     }
 
