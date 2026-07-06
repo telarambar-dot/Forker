@@ -7,6 +7,12 @@ use RubikaBot\Filters\Filters;
 use RubikaBot\Keyboard\Button;
 use RubikaBot\Keyboard\Keypad;
 
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(200);
+    echo 'RubikaBot webhook endpoint is ready.';
+    exit;
+}
+
 $bot = new Bot('BIHAAB0GVXFTQQXOFHXUCHKWZHRXQMHOVPTGCEMBGUPDSAJUPGISSIKUCEZOGOOX');
 
 $bot->onMessage(Filters::command('start'), function(Bot $bot, $message) {
